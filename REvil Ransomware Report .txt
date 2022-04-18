@@ -1,0 +1,80 @@
+REvil Ransomware
+
+REvil ransomware is a file blocking virus considered a serious threat that encrypts files after infection and discards a ransom request message. The message explains that the victim needs to pay a ransom in bitcoins and that when the ransom is not paid in time the demand doubles.
+
+McAfee’s Advanced Threat Research team (ATR) observed the new ransomware family in the wild, dubbed Sodinokibi (or REvil), at the end of April 2019.
+
+The name Sodinokibi was discovered in the hash ccfde149220e87e97198c23fb8115d5a where ‘Sodinokibi.exe’ was mentioned as the internal file name; it is also known by the name of REvil.
+
+REvil: Ransomware-as-a-Service:
+
+At first, REvil ransomware was observed propagating itself by exploiting a vulnerability in Oracle’s WebLogic server. Similar to some other ransomware families, however, REvil is what is also called a Ransomware-as-a-Service (RaaS). Ransomware-as-a-Service is where a group of people maintain the code and another group, known as affiliates, spread the ransomware.
+
+Such a RaaS model allows affiliates to distribute REvil ransomware in any way they want, such as mass-spread attacks using exploit-kits and phishing campaigns, where other affiliates adopt a more targeted approach by uploading tools and scripts to gain more rights and execute the ransomware in the internal network of a victim or brute-forcing RDP access. McAfee has investigated several campaigns spreading REvil, most of which had different modus operandi but they did notice many started with a breach of an RDP server. McAfee also revealed that the code part responsible for the random URL generation of REvil ransomware has similarities with regards to how it is generated in the GandCrab malware.
+
+According to McAfee 'overall, the code is very well written and designed to execute quickly to encrypt the defined files in the configuration of the ransomware.'
+
+Based on the code comparison analysis McAfee conducted between GandCrab and Sodinokibi McAfee consider it a likely hypothesis that the people behind the Sodinokibi ransomware may have some type of relationship with the GandCrab crew.
+
+*Detecting REvil ransomware*
+McAfee is detecting this family by the following signatures:
+
+“Ransom-Sodinokibi”
+“Ransom-REvil!”
+
+MITRE ATT&CK techniques:
+The malware sample uses the following MITRE ATT&CK techniques:
+
+a) File and directory discovery
+b) File deletion
+c) Modify registry
+d) Query registry
+e) Registry modification
+f) Query information of the user
+g) Crypt files
+h) Destroy files
+i) Make C2 connections to send information of the victim
+j) Modify system configuration
+k) Elevate privileges
+
+YARA rule:
+
+rule Sodinokobi
+
+{
+
+/*
+
+This rule detects Sodinokobi Ransomware in memory in old samples and perhaps future.
+
+*/
+
+meta:
+
+author = “McAfee ATR team”
+
+version = “1.0”
+
+description = “This rule detect Sodinokobi Ransomware in memory in old samples and perhaps future.”
+
+strings:
+
+$a = { 40 0F B6 C8 89 4D FC 8A 94 0D FC FE FF FF 0F B6 C2 03 C6 0F B6 F0 8A 84 35 FC FE FF FF 88 84 0D FC FE FF FF 88 94 35 FC FE FF FF 0F B6 8C 0D FC FE FF FF }
+
+$b = { 0F B6 C2 03 C8 8B 45 14 0F B6 C9 8A 8C 0D FC FE FF FF 32 0C 07 88 08 40 89 45 14 8B 45 FC 83 EB 01 75 AA }
+
+condition:
+
+all of them
+
+}
+
+Protecting against REvil ransomware/Sodinokibi:
+
+To protect your organisation against Sodinokibi, make sure your defence is layered. The actors either buy, brute-force or spear-phish themselves into your company or use a trusted third-party that has access to your network. Some guidelines for organisations to protect themselves include employing sandboxing, backing up data, educating users, and restricting access.
+
+
+
+
+
+
