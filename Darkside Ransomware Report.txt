@@ -1,0 +1,54 @@
+What Is Darkside Ransomware?
+
+History:
+DarkSide is a ransomware group that was first noticed in July 2020, targeting companies all around the world.
+
+Darkside’s assaults indicate a thorough understanding of the victims’ architecture, security systems, and vulnerabilities. It’s worth noting that the ransomware operation has indicated that they prefer not to target hospitals, schools, non-profits, or governments, instead preferring to target major companies that can afford to pay hefty ransoms.
+
+Darkside group is operating under the form of a Ransomware-as-a-Service (RaaS). In this way the gains are shared between its holders and partners, or affiliates, who allow entry to companies and execute the ransomware. The DarkSide ransomware gang gets around 25% of a ransom payment, and the rest is taken by the affiliate who organized the assault.
+
+How Does DarkSide Ransomware Work?
+The gang conducts reconnaissance and takes precise efforts to guarantee that its attack tools and tactics will not be detected on monitored devices and endpoints.
+
+1) Initial Access
+Usually, Darkside ransomware gains initial entry through weak links as remotely exploitable accounts and systems.
+
+They are able to access the Virtual Desktop Infrastructure (VDI) that had been put in place to facilitate remote access during the pandemic.
+
+2) Command and Control
+Darkside ransomware attackers establish command and control by utilizing an RDP client operating on port 443, which is routed over TOR.
+
+It’s worth noting that once the Tor browser is installed, its settings are changed to operate as a permanent service, routing traffic delivered to a local (dynamic) port via TOR over HTTPS over port 443.
+
+Cobalt Strike was used as a backup command and control system by deploying stagers (named file.exe) remotely on certain targeted computers through WinRM, each with a unique configuration. Cobalt Strike stagers linked to a specific C2 server to obtain the Cobalt Strike Beacon.
+
+3) Reconnaissance and Credential Harvesting
+Darkside ransomware is notorious for its ability to live off the land (LOtL), but it can also scan networks, conduct commands, dump processes, and steal passwords.
+
+4) Data Collection and Staging
+The active Windows server also acted as a hub for data storage prior to exfiltration. Data was mined from hundreds of servers using a batch program (dump.bat) in the Desktop folder. Dumping files to the same directory and compressing them into 7zip archives using the naming scheme *.7z.[001]-[999].
+
+5) Encryption
+Darkside does not launch ransomware until they have mapped the environment, extracted valuable data, taken control of privileged accounts, and discovered all backup systems, servers, and apps. Several connections to primary backup repositories were identified using compromised service accounts soon before encryption. By postponing the encryption phase of the assault, they position themselves to maximum harm and profit.
+
+The ransomware code is distributed using well-known backdoors (TOR-RDP or Cobalt Strike) and is tailored to each victim. The payload contains the executable, a one-of-a-kind extension, and a one-of-a-kind victim ID that allows the victim to enter Darkside’s website and make a payment.
+
+The malware avoids signature-based detection systems by employing distinct executables and extensions. Darkside also sells customized ransomware to other threat actors (Ransomware as a Service) and profits from successful attacks.
+
+*Exploited Vulnerabilities*
+a) CVE-2019-5544
+If a malicious actor gains network access to port 427 on an ESXi host or on any Horizon DaaS management appliance, the malicious actor may be able to rewrite the heap of the OpenSLP service, resulting in the execution of remote code.
+
+b) CVE-2020-3992
+It is possible for a malicious actor living on the management network and having access to port 427 on an ESXi system to trigger a use-after-free in the OpenSLP service, which might result in remote code execution.
+
+Most Important Attacks
+a) Colonial Pipeline
+Colonial Pipeline is the largest fuel pipeline operator in the U.S. that carries refined gasoline and jet fuel all the way from Texas to New York.
+
+Back in 2021, the company was forced to shut down after being hit by ransomware in a clear demonstration of the vulnerability of energy infrastructure to this type of cyberattacks.
+
+b) Toshiba
+Toshiba is a Japanese multinational conglomerate that provides products and services such as power, industrial and social infrastructure systems, elevators and escalators, printers, as well as IT solutions.
+
+According to the organization, the ransomware attack was limited to part of Europe and only a small amount of work data had been lost, hackers not being able to get access to customer information.
